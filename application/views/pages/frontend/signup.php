@@ -31,7 +31,7 @@
                             </h4>
                             <p>Nonummy massa quam nonummy fermentum in ipsum sit libero ac nisl vivamus porttitor
                             </p>
-                            <a href="#0" class="custom-button account-control-button">Login Account</a>
+                            <a href="<?php echo base_url('u/login') ?>" class="custom-button account-control-button">Login Account</a>
                         </div>
                     </div>
                     <div class="col-lg-6 p-0">
@@ -40,41 +40,28 @@
                             <p>you can create 100% free & secure account , we hope you all like our website</p>
                             <form class="create-account-form">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Full Name" required>
+                                    <input type="text" placeholder="Full Name" id="name" name="name">
+                                    <small class="text-danger"><?php form_error('name'); ?></small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Email" required>
+                                    <input type="text" placeholder="Email" name="email">
+                                    <small class="text-danger"><?php form_error('email'); ?></small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="myInput" placeholder="Password" required>
+                                    <input type="password" id="myInput" placeholder="Password">
                                     <a href="#0" class="show-pass-one show-pass"><i class="fas fa-eye"></i></a>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="myInputTwo" placeholder="Confirm Password" required>
+                                    <input type="password" id="myInputTwo" placeholder="Confirm Password">
                                     <a href="#0" class="show-pass show-pass-two"><i class="fas fa-eye"></i></a>
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" placeholder="Phone" required>
-                                </div>
-                                <div class="form-group">
-                                    <div class="checkbox-wrapper d-flex flex-wrap align-items-center ">
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="c3" name="ticket-type">
-                                            <label for="c3">I Agree</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="c4" name="ticket-type">
-                                            <label for="c4">Subscribe Newslater</label>
-                                        </div>
-                                    </div>
+                                    <input type="number" placeholder="Phone">
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Create an Account">
                                 </div>
                             </form>
-                            <p class="terms-and-conditions">first read our all <a href="terms-condition.html">Terms
-                                    & Conditions</a>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -86,18 +73,6 @@
                             <h4 class="title">login account</h4>
                             <p class="mb-sm-4 mb-3">you can create 100% free & secure account , we hope you all
                                 like our website</p>
-                            <ul class="sign-up-option">
-                                <li>
-                                    <a href="#0" class="google">google</a>
-                                </li>
-                                <li>
-                                    <a href="#0" class="facebook">Facebook</a>
-                                </li>
-                                <li>
-                                    <a href="#0" class="twitter">Twitter</a>
-                                </li>
-                            </ul>
-                            <p class="text-center mb-sm-3">Or</p>
                             <form class="create-account-form">
                                 <div class="form-group">
                                     <input type="text" placeholder="Username" required>
@@ -110,14 +85,6 @@
                                     <input type="submit" value="Login Account">
                                 </div>
                             </form>
-                            <ul class="lost-pass">
-                                <li>
-                                    <a href="#0">Forget Password</a>
-                                </li>
-                                <li>
-                                    <a href="#0">Subscribe Newslater</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 p-0">
@@ -127,7 +94,7 @@
                             </h4>
                             <p>Nonummy massa quam nonummy fermentum in ipsum sit libero ac nisl vivamus porttitor
                             </p>
-                            <a href="#0" class="custom-button account-control-button">Create Account</a>
+                            <a href="" class="custom-button account-control-button">Create Account</a>
                         </div>
                     </div>
                 </div>

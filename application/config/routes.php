@@ -58,22 +58,31 @@ $route['translate_uri_dashes'] = FALSE;
 // ------------------------------------------------------
 $route['a/dashboard']                  = 'admin/dashboard';
 
-$route['a/faq']                       = 'admin/data_faq';
+$route['a/faq']                        = 'admin/data_faq';
 $route['a/team']                       = 'admin/data_team';
 $route['a/news']                       = 'admin/data_news';
+$route['a/profile']                    = 'admin/data_profile';
 $route['a/partner']                    = 'admin/data_partner';
 $route['a/position']                   = 'admin/data_position';
 $route['a/category']                   = 'admin/data_category';
+
+
+// ------------------------------------------------------
+// Reporter
+// ------------------------------------------------------
+$route['a/dashboard']                  = 'admin/dashboard';
+$route['a/profile']                    = 'admin/data_profile';
+$route['a/pending']                    = 'admin/data_news_pending';
 
 // ------------------------------------------------------
 // User
 // ------------------------------------------------------
 $route['u/home']                        = 'dashboard';
 
-$route['u/faq']                        = 'user/faq';
+$route['u/faq']                         = 'user/faq';
 $route['u/blog']                        = 'user/blog';
 $route['u/team']                        = 'user/team';
+$route['u/login']                       = 'auth/index';
 $route['u/about']                       = 'user/about';
-$route['u/signin']                      = 'user/signin';
-$route['u/signup']                      = 'user/signup';
 $route['u/contact']                     = 'user/contact';
+$route['u/registration']                = 'auth/registration';

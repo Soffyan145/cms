@@ -2,23 +2,38 @@
 
 class Data_partner extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->userdata('email')) {
+            redirect('auth');
+        }
+    }
 
     public function index()
     {
-        $data['partners'] = $this->db->query("SELECT * FROM partner")->result();
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/partner/partner', $data);
-        $this->load->view('layout/backend/footer');
+        if ($this->session->userdata('role_id') === '1') {
+            $data['partners'] = $this->db->query("SELECT * FROM partner")->result();
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/partner/partner', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function add()
     {
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/partner/add');
-        $this->load->view('layout/backend/footer');
+        if ($this->session->userdata('role_id') === '1') {
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/partner/add');
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function add_action()
     {
@@ -45,14 +60,18 @@ class Data_partner extends CI_Controller
     }
     public function update($id_partner)
     {
-        $where = array('id_partner' => $id_partner);
-        $data['partners'] = $this->M_partner->take_id_partner($id_partner);
+        if ($this->session->userdata('role_id') === '1') {
+            $where = array('id_partner' => $id_partner);
+            $data['partners'] = $this->M_partner->take_id_partner($id_partner);
 
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/partner/edit', $data);
-        $this->load->view('layout/backend/footer');
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/partner/edit', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function update_action()
     {
@@ -81,8 +100,12 @@ class Data_partner extends CI_Controller
     }
     public function delete($id_partner)
     {
-        $where = array('id_partner' => $id_partner);
-        $this->M_partner->delete_data($where, 'partner');
-        redirect('admin/data_partner');
+        if ($this->session->userdata('role_id') === '1') {
+            $where = array('id_partner' => $id_partner);
+            $this->M_partner->delete_data($where, 'partner');
+            redirect('admin/data_partner');
+        } else {
+            redirect('admin/block_access');
+        }
     }
 }

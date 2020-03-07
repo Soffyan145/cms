@@ -2,23 +2,38 @@
 
 class Data_faq extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->userdata('email')) {
+            redirect('auth');
+        }
+    }
 
     public function index()
     {
-        $data['faqs'] = $this->db->query("SELECT * FROM faq")->result();
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/faq/faq', $data);
-        $this->load->view('layout/backend/footer');
+        if ($this->session->userdata('role_id') === '1') {
+            $data['faqs'] = $this->db->query("SELECT * FROM faq")->result();
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/faq/faq', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function add()
     {
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/faq/add');
-        $this->load->view('layout/backend/footer');
+        if ($this->session->userdata('role_id') === '1') {
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/faq/add');
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function add_action()
     {
@@ -36,14 +51,18 @@ class Data_faq extends CI_Controller
     }
     public function update($id_faq)
     {
-        $where = array('id_faq' => $id_faq);
-        $data['faqs'] = $this->M_faq->take_id_faq($id_faq);
+        if ($this->session->userdata('role_id') === '1') {
+            $where = array('id_faq' => $id_faq);
+            $data['faqs'] = $this->M_faq->take_id_faq($id_faq);
 
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/faq/edit', $data);
-        $this->load->view('layout/backend/footer');
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/faq/edit', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function update_action()
     {
@@ -63,8 +82,12 @@ class Data_faq extends CI_Controller
     }
     public function delete($id_faq)
     {
-        $where = array('id_faq' => $id_faq);
-        $this->M_faq->delete_data($where, 'faq');
-        redirect('admin/data_faq');
+        if ($this->session->userdata('role_id') === '1') {
+            $where = array('id_faq' => $id_faq);
+            $this->M_faq->delete_data($where, 'faq');
+            redirect('admin/data_faq');
+        } else {
+            redirect('admin/block_access');
+        }
     }
 }

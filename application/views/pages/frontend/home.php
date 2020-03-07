@@ -40,34 +40,34 @@
             <div class="flow-item one">
                 <div class="flow-thumb">
                     <div class="thumb">
-                        01
+                        <?php echo $count_news ?>
                     </div>
                 </div>
-                <h5 class="title">Get Order</h5>
+                <h5 class="title">News</h5>
             </div>
             <div class="flow-item two">
                 <div class="flow-thumb">
                     <div class="thumb">
-                        02
+                        <?php echo $count_team ?>
                     </div>
                 </div>
-                <h5 class="title">Marketing</h5>
+                <h5 class="title">Team</h5>
             </div>
             <div class="flow-item three">
                 <div class="flow-thumb">
                     <div class="thumb">
-                        03
+                        <?= $count_partner ?>
                     </div>
                 </div>
-                <h5 class="title">Finish Work</h5>
+                <h5 class="title">Partner</h5>
             </div>
             <div class="flow-item four">
                 <div class="flow-thumb">
                     <div class="thumb">
-                        04
+                        <?= $count_testimonial ?>
                     </div>
                 </div>
-                <h5 class="title">delivery</h5>
+                <h5 class="title">Testimonial</h5>
             </div>
         </div>
     </div>
@@ -93,9 +93,9 @@
                         </div>
                         <div class="team-content">
                             <h6 class="title">
-                                <a href="#0">Sumon Mia</a>
+                                <a href="#0"><?php echo $team->name_team ?></a>
                             </h6>
-                            <span class="info">SEO Expert</span>
+                            <span class="info"><?php echo $team->name_position ?></span>
                         </div>
                     </div>
                 </div>
@@ -104,49 +104,6 @@
     </div>
 </section>
 <!-- ========Team-Section Ends Here ========-->
-
-<!-- ========Coverage-Section Ends Here ========-->
-<section class="our-coverage-section padding-bottom padding-top bg_img bg-fixed" data-background="<?php echo base_url('assets/frontend/') ?>images/coverage/coverage-bg.jpg">
-    <div class="container">
-        <div class="row justify-content-center mb-40-none">
-            <div class="counter-item">
-                <div class="counter-thumb">
-                    <h2 class="odometer title" data-odometer-final="99">0</h2>
-                    <h2 class="title">k</h2>
-                </div>
-                <div class="counter-content">
-                    <h6 class="title">happy user</h6>
-                </div>
-            </div>
-            <div class="counter-item two">
-                <div class="counter-thumb">
-                    <h2 class="odometer title" data-odometer-final="23">0</h2>
-                </div>
-                <div class="counter-content">
-                    <h6 class="title">Services</h6>
-                </div>
-            </div>
-            <div class="counter-item three">
-                <div class="counter-thumb">
-                    <h2 class="odometer title" data-odometer-final="17">0</h2>
-                    <h2 class="title">y</h2>
-                </div>
-                <div class="counter-content">
-                    <h6 class="title">Experience</h6>
-                </div>
-            </div>
-            <div class="counter-item four">
-                <div class="counter-thumb">
-                    <h2 class="odometer title" data-odometer-final="120">0</h2>
-                </div>
-                <div class="counter-content">
-                    <h6 class="title">team member</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ========Coverage-Section Ends Here ========-->
 
 <!-- ========Client-Section Starts Here ========-->
 <section class="client-section padding-top padding-bottom bg-f8">

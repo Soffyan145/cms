@@ -2,24 +2,39 @@
 
 class Data_team extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->userdata('email')) {
+            redirect('auth');
+        }
+    }
 
     public function index()
     {
-        $data['teams'] = $this->db->query("SELECT * FROM team INNER JOIN position ON team.name_position=position.name_position")->result();
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/team/team', $data);
-        $this->load->view('layout/backend/footer');
+        if ($this->session->userdata('role_id') === '1') {
+            $data['teams'] = $this->db->query("SELECT * FROM team INNER JOIN position ON team.name_position=position.name_position")->result();
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/team/team', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function add()
     {
-        $data['positions'] = $this->M_position->get_data('position')->result();
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/team/add', $data);
-        $this->load->view('layout/backend/footer');
+        if ($this->session->userdata('role_id') === '1') {
+            $data['positions'] = $this->M_position->get_data('position')->result();
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/team/add', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function add_action()
     {
@@ -48,15 +63,19 @@ class Data_team extends CI_Controller
     }
     public function update($id_team)
     {
-        $where = array('id_team' => $id_team);
-        $data['teams'] = $this->M_team->take_id_team($id_team);
-        $data['positions'] = $this->M_position->get_data('position')->result();
+        if ($this->session->userdata('role_id') === '1') {
+            $where = array('id_team' => $id_team);
+            $data['teams'] = $this->M_team->take_id_team($id_team);
+            $data['positions'] = $this->M_position->get_data('position')->result();
 
-        $this->load->view('layout/backend/header');
-        $this->load->view('layout/backend/topbar');
-        $this->load->view('layout/backend/sidebar');
-        $this->load->view('pages/backend/team/edit', $data);
-        $this->load->view('layout/backend/footer');
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/team/edit', $data);
+            $this->load->view('layout/backend/footer');
+        } else {
+            redirect('admin/block_access');
+        }
     }
     public function update_action()
     {
@@ -87,8 +106,12 @@ class Data_team extends CI_Controller
     }
     public function delete($id_team)
     {
-        $where = array('id_team' => $id_team);
-        $this->M_team->delete_data($where, 'team');
-        redirect('admin/data_team');
+        if ($this->session->userdata('role_id') === '1') {
+            $where = array('id_team' => $id_team);
+            $this->M_team->delete_data($where, 'team');
+            redirect('admin/data_team');
+        } else {
+            redirect('admin/block_access');
+        }
     }
 }

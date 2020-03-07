@@ -18,165 +18,51 @@
 <!-- ========Team-Section Starts Here ========-->
 <section class="team-section padding-bottom padding-top">
     <div class="container">
-        <div class="row mb-30-none justify-content-center">
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team01.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Sumon Mia</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team02.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Roton Ghos</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team03.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Litan Das</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team04.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Rony Talukdar</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team05.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Aryan Rivan</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team06.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">De Villiers</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team07.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Abu Hena</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-10">
-                <div class="team-item">
-                    <div class="team-thumb">
-                        <a href="#0">
-                            <img src="<?php echo base_url('assets/frontend/') ?>images/team/team08.jpg" alt="team">
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h6 class="title">
-                            <a href="#0">Jakirul Islam</a>
-                        </h6>
-                        <span class="info">SEO Expert</span>
-                    </div>
-                </div>
-            </div>
+        <div class="section-header">
+            <h2 class="title">our expert team</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae corrupti laudantium at assumenda
+                amet, culpa voluptatibus ducimus sed</p>
         </div>
-        <div class="load-more">
-            <a href="#0" class="load-more-button">Load More</a>
+        <div class="row mb-30-none justify-content-center">
+            <?php foreach ($teams as $team) : ?>
+                <div class="col-lg-3 col-md-6 col-sm-10">
+                    <div class="team-item">
+                        <div class="team-thumb">
+                            <a href="#0">
+                                <img src="<?= base_url() ?>assets/backend/img/team/<?= $team->img; ?>" alt="team">
+                            </a>
+                        </div>
+                        <div class="team-content">
+                            <h6 class="title">
+                                <a href="#0"><?php echo $team->name_team ?></a>
+                            </h6>
+                            <span class="info"><?php echo $team->name_position ?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
 <!-- ========Team-Section Ends Here ========-->
 
 <!-- ========Sponsor-Section Starts Here ========-->
-<div class="sponsor-section padding-bottom">
+<div class="sponsor-section padding-top padding-bottom">
     <div class="container">
+        <div class="section-header">
+            <h2 class="title">our regular partners</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae corrupti laudantium at assumenda
+                amet, culpa voluptatibus ducimus sed</p>
+        </div>
         <div class="sponsor-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="sponsor-thumb">
-                        <a href="#0"><img src="<?php echo base_url('assets/frontend/') ?>images/sponsor/sponsor01.png" alt="sponsor"></a>
+                <?php foreach ($partners as $partner) : ?>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="<?= base_url() ?>assets/backend/img/partner/<?= $partner->img; ?>" alt="sponsor">
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="sponsor-thumb">
-                        <a href="#0"><img src="<?php echo base_url('assets/frontend/') ?>images/sponsor/sponsor02.png" alt="sponsor"></a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="sponsor-thumb">
-                        <a href="#0"><img src="<?php echo base_url('assets/frontend/') ?>images/sponsor/sponsor03.png" alt="sponsor"></a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="sponsor-thumb">
-                        <a href="#0"><img src="<?php echo base_url('assets/frontend/') ?>images/sponsor/sponsor04.png" alt="sponsor"></a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="sponsor-thumb">
-                        <a href="#0"><img src="<?php echo base_url('assets/frontend/') ?>images/sponsor/sponsor05.png" alt="sponsor"></a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

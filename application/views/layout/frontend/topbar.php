@@ -30,17 +30,6 @@
                         <a href="#0">Pages</a>
                         <ul class="submenu">
                             <li>
-                                <a href="#0">Account</a>
-                                <ul class="submenu">
-                                    <li>
-                                        <a href="<?php echo base_url('u/signup') ?>">Sign Up</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('u/signin') ?>">Sign In</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
                                 <a href="<?php echo base_url('u/team') ?>">Team</a>
                             </li>
                             <li>

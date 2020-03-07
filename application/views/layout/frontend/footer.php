@@ -7,12 +7,6 @@
                         <h5 class="widget-title">About Us</h5>
                         <p>Lorem ipsum dolor sit amet, mauris libero congue eget pulvinar, cras ut mus tempus dolor,
                             ante tortor ornare ante arcu nam </p>
-                        <h6 class="sub-title">Subscribe</h6>
-                        <form class="footer-form">
-                            <input type="text" placeholder="Your Email" class="footer-input">
-                            <label for="f1"><i class="fas fa-arrow-right"></i></label>
-                            <input type="submit" value="" id="f1">
-                        </form>
                         <div class="social-icons">
                             <a href="#0" class="facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#0" class="twitter"><i class="fab fa-twitter"></i></a>
@@ -23,46 +17,12 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="footer-widget widget-link">
-                        <h5 class="widget-title">Useful Link</h5>
-                        <ul>
-                            <li>
-                                <a href="#0">Facebook Follower</a>
-                            </li>
-                            <li>
-                                <a href="#0">Youtube Subscriber</a>
-                            </li>
-                            <li>
-                                <a href="#0">Twitter Follower</a>
-                            </li>
-                            <li>
-                                <a href="#0">Tik Tok Follower</a>
-                            </li>
-                            <li>
-                                <a href="#0">Likee Follower</a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget widget-link">
-                        <h5 class="widget-title">Important Menu</h5>
-                        <ul>
-                            <li>
-                                <a href="#0">about Us</a>
-                            </li>
-                            <li>
-                                <a href="#0">Privacy</a>
-                            </li>
-                            <li>
-                                <a href="#0">Terms & Condition</a>
-                            </li>
-                            <li>
-                                <a href="#0">Contact</a>
-                            </li>
-                            <li>
-                                <a href="#0">Faq</a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

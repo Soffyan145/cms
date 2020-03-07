@@ -1,6 +1,6 @@
 <?php
 
-class Data_news extends CI_Controller
+class Data_news_pending extends CI_Controller
 {
     public function __construct()
     {
@@ -12,12 +12,12 @@ class Data_news extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('role_id') === '1') {
-            $data['newses'] = $this->db->query("SELECT * FROM news INNER JOIN category ON news.name_category=category.name_category")->result();
+        if ($this->session->userdata('role_id') === '2') {
+            $data['newses'] = $this->db->query("SELECT * FROM news INNER JOIN category ON news.name_category=category.name_category where status='0'")->result();
             $this->load->view('layout/backend/header');
             $this->load->view('layout/backend/topbar');
             $this->load->view('layout/backend/sidebar');
-            $this->load->view('pages/backend/news/news', $data);
+            $this->load->view('pages/backend/news/news_pending', $data);
             $this->load->view('layout/backend/footer');
         } else {
             redirect('admin/block_access');
@@ -25,12 +25,13 @@ class Data_news extends CI_Controller
     }
     public function add()
     {
-        if ($this->session->userdata('role_id') === '1') {
+        if ($this->session->userdata('role_id') === '2') {
             $data['categories'] = $this->M_category->get_data('category')->result();
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('layout/backend/header');
             $this->load->view('layout/backend/topbar');
             $this->load->view('layout/backend/sidebar');
-            $this->load->view('pages/backend/news/add', $data);
+            $this->load->view('pages/backend/news/add_pending', $data);
             $this->load->view('layout/backend/footer');
         } else {
             redirect('admin/block_access');
@@ -62,16 +63,16 @@ class Data_news extends CI_Controller
             'slug'                  => $title,
             'name_category'         => $name_category,
             'body'                  => $body,
-            'status'                => 1,
+            'status'                => 0,
             'date'                  => date('d F Y')
         );
 
         $this->M_news->insert_data($data, 'news');
-        redirect('admin/data');
+        redirect('admin/data_news_pending');
     }
     public function update($id)
     {
-        if ($this->session->userdata('role_id') === '1') {
+        if ($this->session->userdata('role_id') === '2') {
             $where = array('id' => $id);
             $data['newses'] = $this->M_news->take_id_news($id);
             $data['categories'] = $this->M_category->get_data('category')->result();
@@ -79,7 +80,7 @@ class Data_news extends CI_Controller
             $this->load->view('layout/backend/header');
             $this->load->view('layout/backend/topbar');
             $this->load->view('layout/backend/sidebar');
-            $this->load->view('pages/backend/news/edit', $data);
+            $this->load->view('pages/backend/news/edit_pending', $data);
             $this->load->view('layout/backend/footer');
         } else {
             redirect('admin/block_access');
@@ -107,7 +108,6 @@ class Data_news extends CI_Controller
         $data = array(
             'title'                 => $title,
             'slug'                  => $title,
-            'id_user'               => 1,
             'name_category'         => $name_category,
             'body'                  => $body,
             'status'                => 0,
@@ -115,18 +115,18 @@ class Data_news extends CI_Controller
 
         $where = array('id' => $id);
         $this->M_news->update_data('news', $data, $where);
-        redirect('admin/data_news');
+        redirect('admin/data_news_pending');
     }
     public function detail($id)
     {
-        if ($this->session->userdata('role_id') === '1') {
+        if ($this->session->userdata('role_id') === '2') {
             $data['detail'] = $this->M_news->take_id_news($id);
             $data['newses'] = $this->db->query("SELECT * FROM news INNER JOIN category ON news.name_category=category.name_category")->result();
             $data['categories'] = $this->M_category->get_data('category')->result();
             $this->load->view('layout/backend/header');
             $this->load->view('layout/backend/topbar');
             $this->load->view('layout/backend/sidebar');
-            $this->load->view('pages/backend/news/detail', $data);
+            $this->load->view('pages/backend/news/detail_pending', $data);
             $this->load->view('layout/backend/footer');
         } else {
             redirect('admin/block_access');
@@ -134,10 +134,10 @@ class Data_news extends CI_Controller
     }
     public function delete($id)
     {
-        if ($this->session->userdata('role_id') === '1') {
+        if ($this->session->userdata('role_id') === '2') {
             $where = array('id' => $id);
             $this->M_news->delete_data($where, 'news');
-            redirect('admin/data_news');
+            redirect('admin/data_news_pending');
         } else {
             redirect('admin/block_access');
         }

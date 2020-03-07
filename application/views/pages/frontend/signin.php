@@ -84,20 +84,6 @@
                     <div class="col-lg-6 p-0">
                         <div class="common-form-style bg-f8 login-account">
                             <h4 class="title">login account</h4>
-                            <p class="mb-sm-4 mb-3">you can create 100% free & secure account , we hope you all
-                                like our website</p>
-                            <ul class="sign-up-option">
-                                <li>
-                                    <a href="#0" class="google">google</a>
-                                </li>
-                                <li>
-                                    <a href="#0" class="facebook">Facebook</a>
-                                </li>
-                                <li>
-                                    <a href="#0" class="twitter">Twitter</a>
-                                </li>
-                            </ul>
-                            <p class="text-center mb-sm-3">Or</p>
                             <form class="create-account-form">
                                 <div class="form-group">
                                     <input type="text" placeholder="Username" required>
@@ -110,14 +96,6 @@
                                     <input type="submit" value="Login Account">
                                 </div>
                             </form>
-                            <ul class="lost-pass">
-                                <li>
-                                    <a href="#0">Forget Password</a>
-                                </li>
-                                <li>
-                                    <a href="#0">Subscribe Newslater</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 p-0">
@@ -127,7 +105,7 @@
                             </h4>
                             <p>Nonummy massa quam nonummy fermentum in ipsum sit libero ac nisl vivamus porttitor
                             </p>
-                            <a href="#0" class="custom-button account-control-button">Create Account</a>
+                            <a href="<?php echo base_url('u/registration') ?>" class="custom-button account-control-button">Create Account</a>
                         </div>
                     </div>
                 </div>
