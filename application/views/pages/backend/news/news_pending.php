@@ -23,28 +23,27 @@
             </thead>
             <tbody>
                 <?php
-                $no = 1;
                 foreach ($newses as $news) : ?>
                     <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $news->id_user ?></td>
-                        <td><?php echo $news->name_category ?></td>
-                        <td><?php echo $news->title ?></td>
-                        <td><?php if ($news->status == "0") {
+                        <td><?php echo ++$start ?></td>
+                        <td><?php echo $news['id_user']; ?></td>
+                        <td><?php echo $news['name_category']; ?></td>
+                        <td><?php echo $news['title']; ?></td>
+                        <td><?php if ($news['status'] == "0") {
                                 echo "<span class='badge badge-danger'>Not Allready</span>";
                             } else {
                                 echo "<span class='badge badge-primary'>Allready</span>";
                             } ?>
                         </td>
                         <td>
-                            <a href="<?php echo base_url('admin/data_news_pending/detail/') . $news->id ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                            <a href="<?php echo base_url('admin/data_news_pending/update/') . $news->id ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a href="<?php echo base_url('admin/data_news_pending/delete/') . $news->id ?>" class="btn btn-danger" onclick="javascript: return confirm('Are You sure to delete ?')"><i class="fas fa-trash"></i></a>
+                            <a href="<?php echo base_url('admin/data_news/update_status/') . $news['id']; ?>" class="btn btn-info" onclick="javascript: return confirm('Are You sure to publish ?')"><i class="fas fa-check-square"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+
+        <?= $this->pagination->create_links(); ?>
 
     </section>
 </div>

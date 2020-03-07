@@ -6,6 +6,11 @@ class M_team extends CI_model
     {
         return $this->db->get($table);
     }
+    public function get_team($limit, $start)
+    {
+        $this->db->query("SELECT * FROM team INNER JOIN position ON team.name_position=position.name_position")->result();
+        return $this->db->get('team', $limit, $start)->result_array();
+    }
     public function insert_data($data, $table)
     {
         $this->db->insert($table, $data);
@@ -27,5 +32,9 @@ class M_team extends CI_model
         } else {
             return false;
         }
+    }
+    public function count_news()
+    {
+        return $this->db->get('team')->num_rows();
     }
 }

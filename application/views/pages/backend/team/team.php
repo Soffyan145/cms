@@ -22,23 +22,24 @@
             </thead>
             <tbody>
                 <?php
-                $no = 1;
                 foreach ($teams as $team) : ?>
                     <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $team->name_team ?></td>
-                        <td><?php echo $team->name_position ?></td>
+                        <td><?php echo ++$start ?></td>
+                        <td><?php echo $team['name_team']; ?></td>
+                        <td><?php echo $team['name_position']; ?></td>
                         <td>
-                            <img width="80px" src='<?= base_url() ?>assets/backend/img/team/<?= $team->img; ?>' height='80px'>
+                            <img width="80px" src='<?= base_url() ?>assets/backend/img/team/<?= $team['img']; ?>' height='80px'>
                         </td>
                         <td>
-                            <a href="<?php echo base_url('admin/data_team/update/') . $team->id_team ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a href="<?php echo base_url('admin/data_team/delete/') . $team->id_team ?>" class="btn btn-danger" onclick="javascript: return confirm('Are You sure to delete ?')"><i class="fas fa-trash"></i></a>
+                            <a href="<?php echo base_url('admin/data_team/update/') . $team['id_team']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            <a href="<?php echo base_url('admin/data_team/delete/') . $team['id_team']; ?>" class="btn btn-danger" onclick="javascript: return confirm('Are You sure to delete ?')"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+
+        <?= $this->pagination->create_links(); ?>
 
     </section>
 </div>

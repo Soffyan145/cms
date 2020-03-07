@@ -61,6 +61,7 @@ $route['a/dashboard']                  = 'admin/dashboard';
 $route['a/faq']                        = 'admin/data_faq';
 $route['a/team']                       = 'admin/data_team';
 $route['a/news']                       = 'admin/data_news';
+$route['a/pending']                    = 'admin/data_news_pending';
 $route['a/profile']                    = 'admin/data_profile';
 $route['a/partner']                    = 'admin/data_partner';
 $route['a/position']                   = 'admin/data_position';

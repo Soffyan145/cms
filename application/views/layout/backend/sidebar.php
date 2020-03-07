@@ -24,7 +24,7 @@ $user = $this->db->get_where('user', ['email' => $this->session->userdata('email
                                 <ul class="dropdown-menu">
                                     <li><a class="nav-link" href="<?php echo base_url('admin/data_category') ?>">Category</a></li>
                                     <li><a class="nav-link" href="<?php echo base_url('admin/data_news') ?>">Data news</a></li>
-                                    <li><a class="nav-link" href="<?php echo base_url('admin/data_news') ?>">Data news pending</a></li>
+                                    <li><a class="nav-link" href="<?php echo base_url('a/pending') ?>">Data news pending</a></li>
                                 </ul>
                             </li>
 

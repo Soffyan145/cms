@@ -12,12 +12,42 @@ class Data_news_pending extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('role_id') === '2') {
-            $data['newses'] = $this->db->query("SELECT * FROM news INNER JOIN category ON news.name_category=category.name_category where status='0'")->result();
+        if ($this->session->userdata('role_id') === '1') {
+            $this->load->model('M_news', 'news');
+            //pagination
+            $config['base_url'] = "http://localhost/cms/admin/data_news_pending/index";
+            $config['total_rows'] = $this->M_news->count_news();
+            $config['per_page'] = 5;
+
+            //styling
+            $config['full_tag_open'] = '<div class="card-body"><nav aria-label="..."><ul class="pagination">';
+            $config['full_tag_close'] = '</ul></nav></div>';
+
+            $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+
+            $config['num_tag_open'] = '<li class="page-item">';
+            $config['num_tag_close'] = '</li>';
+
+            $config['attributes'] = array('class' => 'page-link');
+            //initialize
+            $this->pagination->initialize($config);
+
+
+
+            $data['start'] = $this->uri->segment(4);
+            $data['newses'] = $this->M_news->get_news_pending($config['per_page'], $data['start']);
             $this->load->view('layout/backend/header');
             $this->load->view('layout/backend/topbar');
             $this->load->view('layout/backend/sidebar');
             $this->load->view('pages/backend/news/news_pending', $data);
+            $this->load->view('layout/backend/footer');
+        } elseif ($this->session->userdata('role_id') === '2') {
+            $data['newses'] = $this->db->query("SELECT * FROM news INNER JOIN category ON news.name_category=category.name_category where status='0'")->result();
+            $this->load->view('layout/backend/header');
+            $this->load->view('layout/backend/topbar');
+            $this->load->view('layout/backend/sidebar');
+            $this->load->view('pages/backend/reporter/news_pending', $data);
             $this->load->view('layout/backend/footer');
         } else {
             redirect('admin/block_access');

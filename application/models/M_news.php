@@ -6,6 +6,16 @@ class M_news extends CI_model
     {
         return $this->db->get($table);
     }
+    public function get_news($limit, $start)
+    {
+        $this->db->where("status", "1");
+        return $this->db->get('news', $limit, $start)->result_array();
+    }
+    public function get_news_pending($limit, $start)
+    {
+        $this->db->where("status", "0");
+        return $this->db->get('news', $limit, $start)->result_array();
+    }
     public function insert_data($data, $table)
     {
         $this->db->insert($table, $data);
@@ -27,5 +37,9 @@ class M_news extends CI_model
         } else {
             return false;
         }
+    }
+    public function count_news()
+    {
+        return $this->db->get('news')->num_rows();
     }
 }
